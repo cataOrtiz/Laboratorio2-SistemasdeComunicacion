@@ -33,7 +33,7 @@ public class v_encript extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         encriptar = new javax.swing.JButton();
         jclave = new javax.swing.JPasswordField();
-        jLabel4 = new javax.swing.JLabel();
+        Resultado_encript = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -58,7 +58,7 @@ public class v_encript extends javax.swing.JFrame {
         });
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel3.setText("Su mensaje desencriptado es:");
+        jLabel3.setText("Su mensaje encriptado es:");
         jLabel3.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -81,7 +81,7 @@ public class v_encript extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(Resultado_encript, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -99,7 +99,7 @@ public class v_encript extends javax.swing.JFrame {
                 .addGap(30, 30, 30)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(Resultado_encript, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(25, 25, 25))
         );
 
@@ -113,9 +113,16 @@ public class v_encript extends javax.swing.JFrame {
         String mensaje_cifrado;
         int tamano = clave.length();
         
-    
+        String inv_mensaje = c.invertir(mensaje);
+        String sus_mensaje = c.sustituir(mensaje);
+        
+        //mensaje_cifrado = CE.verMensajeCifrado(CE.realizarEncriptacion(clave_bin, mensaje_bin, tamano));
+        
         //algoritmo aqui
-        jTextPane1.setText(mensaje_cifrado);
+        
+
+            
+        Resultado_encript.setText(sus_mensaje);
     }//GEN-LAST:event_encriptarActionPerformed
 
     /**
@@ -154,11 +161,11 @@ public class v_encript extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel Resultado_encript;
     private javax.swing.JButton encriptar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JPasswordField jclave;
     private javax.swing.JTextArea jmensaje;

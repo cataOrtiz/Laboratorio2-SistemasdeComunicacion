@@ -32,6 +32,7 @@ public class inicio extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setLocation(new java.awt.Point(300, 200));
 
         jButton1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jButton1.setText("Presione aquí para encriptar");
@@ -85,6 +86,7 @@ public class inicio extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         v_encript nuevo = new v_encript();
         nuevo.show();
+        this.hide();
              
     }//GEN-LAST:event_jButton1ActionPerformed
 

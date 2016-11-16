@@ -33,11 +33,13 @@ public class v_encript extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         encriptar = new javax.swing.JButton();
         jclave = new javax.swing.JPasswordField();
-        Resultado_encript = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
+        jToggleButton1 = new javax.swing.JToggleButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setLocation(new java.awt.Point(200, 200));
+        setLocation(new java.awt.Point(300, 200));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel1.setText("Ingrese el texto que desea encriptar:");
@@ -61,6 +63,18 @@ public class v_encript extends javax.swing.JFrame {
         jLabel3.setText("Su mensaje encriptado es:");
         jLabel3.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
+        jToggleButton1.setActionCommand("Volver");
+        jToggleButton1.setLabel("Volver");
+        jToggleButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1ActionPerformed(evt);
+            }
+        });
+
+        jTextArea1.setColumns(20);
+        jTextArea1.setRows(5);
+        jScrollPane2.setViewportView(jTextArea1);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -81,7 +95,10 @@ public class v_encript extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(Resultado_encript, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jScrollPane2)
+                        .addGap(18, 18, 18)
+                        .addComponent(jToggleButton1)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -96,11 +113,17 @@ public class v_encript extends javax.swing.JFrame {
                     .addComponent(jLabel2)
                     .addComponent(encriptar)
                     .addComponent(jclave, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(30, 30, 30)
-                .addComponent(jLabel3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(Resultado_encript, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(25, 25, 25))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(93, 93, 93)
+                        .addComponent(jToggleButton1)
+                        .addGap(34, 34, 34))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(7, 7, 7))))
         );
 
         pack();
@@ -110,20 +133,25 @@ public class v_encript extends javax.swing.JFrame {
         controller c = new controller();
         String mensaje = jmensaje.getText();
         String clave = jclave.getText();
-        String mensaje_cifrado;
-        int tamano = clave.length();
         
         String inv_mensaje = c.invertir(mensaje);
-        String sus_mensaje = c.sustituir(mensaje);
+        int [] sus_mensaje = c.sustituir(inv_mensaje);
+        String encriptado = c.encriptar_key(sus_mensaje, clave);
         
-        //mensaje_cifrado = CE.verMensajeCifrado(CE.realizarEncriptacion(clave_bin, mensaje_bin, tamano));
+       //mensaje_cifrado = c.verMensajeCifrado(c.realizarEncriptacion(clave_bin, mensaje_bin, tamano));
         
         //algoritmo aqui
         
 
             
-        Resultado_encript.setText(sus_mensaje);
+        jTextArea1.setText(encriptado);
     }//GEN-LAST:event_encriptarActionPerformed
+
+    private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
+        inicio nuevo = new inicio();
+        nuevo.show();
+        this.hide();
+    }//GEN-LAST:event_jToggleButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -161,12 +189,14 @@ public class v_encript extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel Resultado_encript;
     private javax.swing.JButton encriptar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JToggleButton jToggleButton1;
     private javax.swing.JPasswordField jclave;
     private javax.swing.JTextArea jmensaje;
     // End of variables declaration//GEN-END:variables

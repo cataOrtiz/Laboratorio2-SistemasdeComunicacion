@@ -17,7 +17,13 @@ public class controller {
 
     }
     
-    public String sustituir(String mensaje){
+    public int [] sustituir(String mensaje){
         return encript.sustituye(mensaje);
+    }
+    public String encriptar_key( int [] A, String key ){
+       return encript.Encripta_clave(A, key);
+    }  
+    public String desencriptar( int [] mensaje_final , String key ){
+       return encript.desencripta(mensaje_final, key);
     }
 }
